@@ -28,6 +28,7 @@ public class CaesarCipher {
         //word = word.toCharArray();
 
         stdOutPen.println(encrypt('c', 9));
+        stdOutPen.println(encrypt('c', 10));
         
     } // main
 
