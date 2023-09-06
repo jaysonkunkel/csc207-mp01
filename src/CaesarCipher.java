@@ -29,13 +29,13 @@ public class CaesarCipher {
         if(args[0].equals("encode")){
             for(int i = 0; i < 26; i++){
                 stdOutPen.print("n = " + i + ": "); 
-                stdOutPen.println(new String (encryptString(args[1], i)));
+                stdOutPen.println(encryptString(args[1], i));
             } // for
         } // if 
         else {
             for(int i = 0; i < 26; i++){
                 stdOutPen.print("n = " + i + ": "); 
-                stdOutPen.println(new String (decryptString(args[1], i)));
+                stdOutPen.println(decryptString(args[1], i));
             } // for
         } // if
 
@@ -49,13 +49,13 @@ public class CaesarCipher {
      * @param key - integer
      * @return - Encoded character
      */
-    public static char encrypt (char ch, int key) {
+    public static char encryptChar (char ch, int key) {
         
         int charValue = (int) ch - base;
         int result = (charValue + key) % 26;
         return (char) (result + base);
         
-    } // encrypt (char, int)
+    } // encryptChar (char, int)
 
      /**
      * Returns the result of decoding char ch by a given key.
@@ -64,13 +64,13 @@ public class CaesarCipher {
      * @param key - integer
      * @return - Decoded character
      */   
-    public static char decrypt (char ch, int key) {
+    public static char decryptChar (char ch, int key) {
 
         int charValue = (int) ch - base;
         int result = (charValue - key) % 26 + 26;
         return (char) (result % 26 + base); 
         
-    } // decrypt (char, int)
+    } // decryptChar (char, int)
 
      /**
      * Returns the result of encoding a String by a given key.
@@ -79,15 +79,15 @@ public class CaesarCipher {
      * @param key - integer
      * @return - Encoded string
      */      
-    public static char[] encryptString (String word, int key) {
+    public static String encryptString (String word, int key) {
 
         char[] wordArray = word.toCharArray();
 
         for(int i = 0; i < wordArray.length; i++){
-            wordArray[i] = encrypt(wordArray[i], key);
+            wordArray[i] = encryptChar(wordArray[i], key);
         } // for
 
-        return wordArray;
+        return new String (wordArray);
 
     } // encryptString (String, int)
 
@@ -98,17 +98,16 @@ public class CaesarCipher {
      * @param key - integer
      * @return - Decoded string
      */  
-    public static char[] decryptString (String word, int key) {
+    public static String decryptString (String word, int key) {
 
         char[] wordArray = word.toCharArray();
 
         for(int i = 0; i < wordArray.length; i++){
-            wordArray[i] = decrypt(wordArray[i], key);
+            wordArray[i] = decryptChar(wordArray[i], key);
         } // for
 
-        return wordArray;
+        return new String(wordArray);
 
     } // decryptString (String, int)
-
 
 } // CaesarCipher 
