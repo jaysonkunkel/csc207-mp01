@@ -8,6 +8,7 @@ public class VigenereCipher {
 
     // pen that writes to stdout
     PrintWriter stdOutPen = new PrintWriter(System.out, true);
+    
     //pen that writes to stderr
     PrintWriter stdErrPen = new PrintWriter(System.err, true);
 
