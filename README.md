@@ -1,18 +1,7 @@
-## Getting Started
-
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
-
-## Folder Structure
-
-The workspace contains two folders by default, where:
-
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
-
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
-
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
-
-## Dependency Management
-
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
+Mini Project 1: Classical Encryption
+Members: Jayson Kunkel
+This submission contains the CaeserCipher and VigenereCipher classes for the first mini project.
+Resources: java google style guide -- I referenced the style guide when formatting comments and function headers.
+           java String class documentation -- I used several functions from the String class and referenced its documentation.
+           StackOverflow -- I referenced StackOverflow early in development when I was figuring out the casting of ints to chars and vice versa.
+           
