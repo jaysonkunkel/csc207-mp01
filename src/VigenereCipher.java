@@ -55,9 +55,12 @@ public class VigenereCipher {
    */
   public static char encryptChar (char ch, char key) {
       
+    // "re-base" at 0 by subtracting value of 'a'
     int charValue = (int) ch - base;
     int keyValue = (int) key - base;
+    // shift char and wrap around to front if needed
     char result = (char) ((charValue + keyValue) % 26);
+    // return encrypted character
     return (char) (result + base);
       
   } // encryptChar (char, char)
@@ -70,10 +73,13 @@ public class VigenereCipher {
    * @return - Decoded character
    */
   public static char decryptChar (char ch, char key) {
-      
+    
+    // "re-base" at 0 by subtracting value of 'a'
     int charValue = (int) ch - base;
     int keyValue = (int) key - base;
+    // shift char and wrap around to end if needed
     char result = (char) ((charValue - keyValue) % 26 + 26);
+    // return decrypted character
     return (char) (result % 26 + base);
       
   } // decryptChar (char, char)
@@ -91,6 +97,7 @@ public class VigenereCipher {
       char[] keyArr = key.toCharArray();
       char[] result = new char[word.length()];
 
+      // for each letter of original word, store its shifted value in new string
       for(int i = 0; i < word.length(); i++){
         result[i] = encryptChar(wordArr[i], keyArr[i % key.length()]);
       } // for
@@ -112,6 +119,7 @@ public class VigenereCipher {
       char[] keyArr = key.toCharArray();
       char[] result = new char[word.length()];
 
+      // for each letter of original word, store its shifted value in new string
       for(int i = 0; i < word.length(); i++){
         result[i] = decryptChar(wordArr[i], keyArr[i % key.length()]);
       } // for
@@ -120,4 +128,4 @@ public class VigenereCipher {
 
   } // decryptString (String, String)
   
-} // VigenereCipher
+} // class VigenereCipher

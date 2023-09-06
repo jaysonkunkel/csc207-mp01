@@ -27,12 +27,14 @@ public class CaesarCipher {
         
         // if first parameter is "encode", encrypt string; otherwise, decrypt string
         if(args[0].equals("encode")){
+            // prints all 26 possible encryption shifts
             for(int i = 0; i < 26; i++){
                 stdOutPen.print("n = " + i + ": "); 
                 stdOutPen.println(encryptString(args[1], i));
             } // for
         } // if 
         else {
+            // prints all 26 possible decryption shifts
             for(int i = 0; i < 26; i++){
                 stdOutPen.print("n = " + i + ": "); 
                 stdOutPen.println(decryptString(args[1], i));
@@ -51,8 +53,11 @@ public class CaesarCipher {
      */
     public static char encryptChar (char ch, int key) {
         
+        // "re-base" at 0 by subtracting value of 'a'
         int charValue = (int) ch - base;
+        // shift char and wrap around to front if needed
         int result = (charValue + key) % 26;
+        // return encrypted character
         return (char) (result + base);
         
     } // encryptChar (char, int)
@@ -66,8 +71,11 @@ public class CaesarCipher {
      */   
     public static char decryptChar (char ch, int key) {
 
+        // "re-base" at 0 by subtracting value of 'a'
         int charValue = (int) ch - base;
+        // shift char and wrap around to end if needed
         int result = (charValue - key) % 26 + 26;
+        // return decrypted character
         return (char) (result % 26 + base); 
         
     } // decryptChar (char, int)
@@ -83,6 +91,7 @@ public class CaesarCipher {
 
         char[] wordArray = word.toCharArray();
 
+        // encrypt every letter in the string
         for(int i = 0; i < wordArray.length; i++){
             wordArray[i] = encryptChar(wordArray[i], key);
         } // for
@@ -102,6 +111,7 @@ public class CaesarCipher {
 
         char[] wordArray = word.toCharArray();
 
+        // decrypt every letter in the string
         for(int i = 0; i < wordArray.length; i++){
             wordArray[i] = decryptChar(wordArray[i], key);
         } // for
@@ -110,4 +120,4 @@ public class CaesarCipher {
 
     } // decryptString (String, int)
 
-} // CaesarCipher 
+} // class CaesarCipher 
